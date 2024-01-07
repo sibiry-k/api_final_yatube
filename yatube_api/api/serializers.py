@@ -17,6 +17,8 @@ class GroupSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    """Serializer for Post."""
+
     author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -25,6 +27,8 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    """Serializer for Comment."""
+
     author = serializers.SlugRelatedField(
         read_only=True, slug_field='username'
     )
@@ -36,6 +40,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
+    """Serializer for Follow."""
+
     user = serializers.SlugRelatedField(
         queryset=User.objects.all(),
         slug_field='username',

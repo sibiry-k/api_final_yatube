@@ -14,6 +14,8 @@ from .serializers import (
 
 class CreateListViewSet(mixins.CreateModelMixin, mixins.ListModelMixin,
                         viewsets.GenericViewSet):
+    """Basic CreateListViewSet."""
+
     pass
 
 
@@ -53,6 +55,8 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class FollowViewSet(CreateListViewSet):
+    """ViewSet for Follow model."""
+
     serializer_class = FollowSerializer
     permission_classes = (permissions.IsAuthenticated,)
     filter_backends = (filters.SearchFilter,)

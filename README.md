@@ -1,43 +1,72 @@
-### Как запустить проект:
+## Описание. Что это за проект, какую задачу он решает, в чём его польза.
+**Yatube** — это платформа для блогов. Позволяет пользователям размещать свои статьи, комментировать их, а также подписываться на интересных авторов, объединяет людей по интересам. 
 
-Клонировать репозиторий и перейти в него в командной строке:
+## Установка. Как развернуть проект на локальной машине.
 
-```
-git clone https://github.com/yandex-praktikum/kittygram.git
-```
-
-```
-cd kittygram
-```
-
-Cоздать и активировать виртуальное окружение:
+### Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-python3 -m venv env
+git clone git@github.com:yandex-praktikum/api_final_yatube.git
 ```
 
 ```
-source env/bin/activate
+cd api_final_yatube
 ```
 
-Установить зависимости из файла requirements.txt:
+### Cоздать и активировать виртуальное окружение:
 
 ```
-python3 -m pip install --upgrade pip
+python -m venv venv
+```
+
+```
+source venv/Scripts/activate
+```
+### Установить зависимости из файла requirements.txt:
+
+```
+python -m pip install --upgrade pip
 ```
 
 ```
 pip install -r requirements.txt
 ```
 
-Выполнить миграции:
+### Выполнить миграции:
 
 ```
-python3 manage.py migrate
+python manage.py migrate
 ```
 
-Запустить проект:
+## Запустить проект:
 
 ```
-python3 manage.py runserver
+python manage.py runserver
+```
+
+## Примеры. Некоторые примеры запросов к API.
+
+### Работа с публикациями:
+Получить все публикации:
+```
+GET http://127.0.0.1:8000/api/v1/posts/
+```
+Создать публикацию:
+Payload
+{
+  "text": "string",
+  "image": "string",
+  "group": 0
+}
+```
+POST http://127.0.0.1:8000/api/v1/posts/
+```
+### Получить JWT-токен:
+Payload
+{
+  "username": "string",
+  "password": "string"
+}
+```
+POST http://127.0.0.1:8000/api/v1/jwt/create/
 ```

@@ -2,6 +2,7 @@ from rest_framework import permissions
 
 
 class PostPermission(permissions.BasePermission):
+    """Access for all (SAFE_METHODS) or author."""
 
     def has_permission(self, request, view):
         return (
@@ -15,7 +16,7 @@ class PostPermission(permissions.BasePermission):
 
 
 class CommentPermission(permissions.BasePermission):
-    """Basic API-project permission."""
+    """Access for registered users or for the author."""
 
     def has_permission(self, request, view):
         return (
